@@ -1,56 +1,46 @@
 hana:
+  install_packages: false
   nodes:
-    - host: 'hana01'
+    - host: 'ip-10-0-1-0'
       sid: 'prd'
       instance: '"00"'
       password: 'Qwerty1234'
       install:
-        software_path: '/root/sap_inst/51052481'
+        software_path: '/root/sap_inst/'
         root_user: 'root'
-        root_password: 'linux'
+        root_password: ''
         system_user_password: 'Qwerty1234'
         sapadm_password: 'Qwerty1234'
+        extra_parameters:
+          hostname: 'ip-10-0-1-0'
       primary:
-        name: NUREMBERG
+        name: MST
         backup:
           key_name: 'backupkey'
           database: 'SYSTEMDB'
           file: 'backup'
         userkey:
           key_name: 'backupkey'
-          environment: 'hana01:30013'
+          environment: 'ip-10-0-1-0:30013'
           user_name: 'SYSTEM'
           user_password: 'Qwerty1234'
           database: 'SYSTEMDB'
 
-    - host: 'hana02'
+    - host: 'ip-10-0-1-1'
       sid: 'prd'
       instance: '"00"'
       password: 'Qwerty1234'
       install:
-        software_path: '/root/sap_inst/51052481'
+        software_path: '/root/sap_inst/'
         root_user: 'root'
-        root_password: 'linux'
+        root_password: ''
         system_user_password: 'Qwerty1234'
         sapadm_password: 'Qwerty1234'
         extra_parameters:
-          hostname: 'hana02'
+          hostname: 'ip-10-0-1-1'
       secondary:
-        name: PRAGUE
-        remote_host: 'hana01'
+        name: SLV
+        remote_host: 'ip-10-0-1-0'
         remote_instance: '00'
         replication_mode: 'sync'
         operation_mode: 'logreplay'
-
-    - host: hana02
-      sid: 'qas'
-      instance: '"01"'
-      password: 'Qwerty1234'
-      install:
-        software_path: '/root/sap_inst/51052481'
-        root_user: 'root'
-        root_password: 'linux'
-        system_user_password: 'Qwerty1234'
-        sapadm_password: 'Qwerty1234'
-        extra_parameters:
-          hostname: 'hana02'
