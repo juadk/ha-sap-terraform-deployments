@@ -1,10 +1,14 @@
 cluster:
+  install_packages: false
   name: 'hacluster'
-  init: 'hana01'
-  interface: 'eth1'
-  watchdog: /dev/watchdog
+  init: 'ip-10-0-1-0'
+  interface: 'eth0'
+  unicast: True
+  watchdog: 
+    module: softdog
+    device: /dev/watchdog
   sbd:
-    device: '/dev/vdc'
+    device: '/dev/sda'
   join_timer: '20'
 {% if grains['init_type'] != 'skip-hana' %}
   configure:
@@ -19,3 +23,4 @@ cluster:
   platform: 'libvirt'
   prefer_takeover: 'true'
   auto_register: 'false'
+

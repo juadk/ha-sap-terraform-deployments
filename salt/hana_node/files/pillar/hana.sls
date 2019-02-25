@@ -3,41 +3,42 @@ hana:
     - host: 'hana01'
       sid: 'prd'
       instance: '"00"'
-      password: 'Qwerty1234'
+      password: 'ENTER_YOUR_PASSWORD'
       install:
-        software_path: '/root/sap_inst/51052481'
+        software_path: '/root/sap_inst/'
         root_user: 'root'
-        root_password: 'linux'
-        system_user_password: 'Qwerty1234'
-        sapadm_password: 'Qwerty1234'
+        root_password: ''
+        system_user_password: 'ENTER_YOUR_PASSWORD'
+        extra_parameters:
+          hostname: 'hana01'
+       sapadm_password: 'ENTER_YOUR_PASSWORD'
       primary:
-        name: NUREMBERG
+        name: MASTER
         backup:
-          user: 'backupkey'
-          password: 'Qwerty1234'
+          key_name: 'backupkey'
           database: 'SYSTEMDB'
           file: 'backup'
         userkey:
-          key: 'backupkey'
+          key_name: 'backupkey'
           environment: 'hana01:30013'
-          user: 'SYSTEM'
-          password: 'Qwerty1234'
+          user_name: 'SYSTEM'
+          user_password: 'ENTER_YOUR_PASSWORD'
           database: 'SYSTEMDB'
 
     - host: 'hana02'
       sid: 'prd'
       instance: '"00"'
-      password: 'Qwerty1234'
+      password: 'ENTER_YOUR_PASSWORD'
       install:
         software_path: '/root/sap_inst/51052481'
         root_user: 'root'
-        root_password: 'linux'
-        system_user_password: 'Qwerty1234'
-        sapadm_password: 'Qwerty1234'
+        root_password: ''
+        system_user_password: 'ENTER_YOUR_PASSWORD'
+        sapadm_password: 'ENTER_YOUR_PASSWORD'
         extra_parameters:
           hostname: 'hana02'
       secondary:
-        name: PRAGUE
+        name: SLAVE
         remote_host: 'hana01'
         remote_instance: '00'
         replication_mode: 'sync'
@@ -46,12 +47,12 @@ hana:
     - host: hana02
       sid: 'qas'
       instance: '"01"'
-      password: 'Qwerty1234'
+      password: 'ENTER_YOUR_PASSWORD'
       install:
         software_path: '/root/sap_inst/51052481'
         root_user: 'root'
         root_password: 'linux'
-        system_user_password: 'Qwerty1234'
-        sapadm_password: 'Qwerty1234'
+        system_user_password: 'ENTER_YOUR_PASSWORD'
+        sapadm_password: 'ENTER_YOUR_PASSWORD'
         extra_parameters:
           hostname: 'hana02'
