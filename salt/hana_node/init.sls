@@ -2,7 +2,6 @@ include:
 
 {% if grains['provider'] == 'aws' %}
   - hana_node.add_credentials
-  #- hana_node.iscsi_initiator
   - iscsi.initiator
   {% if grains['init_type'] != 'skip-hana' %}
   - hana_node.download_hana_inst
