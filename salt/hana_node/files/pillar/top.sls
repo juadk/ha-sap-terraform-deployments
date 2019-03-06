@@ -1,4 +1,5 @@
 base:
-   '*':
-      - hana
-      - cluster
+  '*':
+    - hana
+    - cluster
+    - iscsi
