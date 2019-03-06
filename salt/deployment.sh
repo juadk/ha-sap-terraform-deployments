@@ -8,6 +8,7 @@ salt-call --local --file-root=/root/salt/ \
     --force-color state.apply pre_installation
 
 salt-call --local --file-root=/root/salt/ \
+    --states-dir=/srv/salt/ \
     --pillar-root=/root/salt/pillar/ \
     --log-level=info \
     --log-file=/tmp/salt-deployment.log \
