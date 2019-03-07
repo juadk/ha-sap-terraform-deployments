@@ -2,4 +2,3 @@ base:
   '*':
     - hana
     - cluster
-    - iscsi
