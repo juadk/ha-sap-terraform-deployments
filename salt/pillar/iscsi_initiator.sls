@@ -1,4 +1,7 @@
 iscsi:
+  client:
+    pkgs:
+      wanted: []
   isns:
     enabled: False
   initiator:
